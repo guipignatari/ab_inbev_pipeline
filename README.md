@@ -139,17 +139,21 @@ Após o pipeline de ingestão e transformação dos dados (Bronze → Silver →
 
 - Como consultar no Athena ?
 
-1. Acesse o console do Amazon Athena.
+1. Crie uma pasta para salvar os dados agregados provenientes das consultas.
 
-2. No painel esquerdo, selecione o banco de dados ou crie um novo com:
+    - Por exemplo: `s3://ab-inbev-data-pipeline/athena-results/`
+
+2. Acesse o console do Amazon Athena.
+
+3. No painel esquerdo, selecione o banco de dados ou crie um novo com:
    
-     `CREATE DATABASE breweries_data;`
+   `CREATE DATABASE breweries_data;`
 
-3. Crie a tabela apontando para os dados Parquet:
+4. Crie a tabela apontando para os dados Parquet:
    
 ![image](https://github.com/user-attachments/assets/7cdaebdd-0a2d-4f64-9727-19414cb963bd)
 
-4. Faça consultas SQL normalmente via terminal Athena.
+5. Faça consultas SQL normalmente via terminal Athena.
 
 ## 👤 Autor
 
