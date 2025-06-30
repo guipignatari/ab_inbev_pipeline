@@ -12,13 +12,13 @@ https://www.openbrewerydb.org/
 
 API: https://api.openbrewerydb.org/breweries
 
-Os dados são extraídos no formato JSON e salvos na camada Bronze para posterior transformação e análise.
+Os dados são extraídos no formato JSON e salvos de forma bruta na camada Bronze, para assim, posteriores transformações e análises.
 
 ## 🚀 Stack Utilizada
 
 - Python (pandas, boto3, pyarrow)
-- AWS (S3, Athena, IAM)
-- Airflow
+- Amazon AWS (S3, Athena, IAM)
+- Apache Airflow
 - Docker / Docker Compose
 
 ## 📐 Arquitetura e Design
@@ -67,7 +67,7 @@ Na raiz do projeto, crie um arquivo chamado `.env` com o seguinte conteúdo:
 
 ![image](https://github.com/user-attachments/assets/2c7ca1b8-321e-41f6-94dd-9fbec6b11103)
 
-⚠️ Importante: Nunca suba esse arquivo para o Git. Ele já está incluído no .gitignore por padrão
+⚠️ **Importante: Nunca suba esse arquivo para o Git. Ele já está incluído no .gitignore por padrão**
 
 Carregue-as no terminal com:
 
@@ -124,6 +124,32 @@ Os testes implementados cobrem:
 Execute no terminal com:
 
 `pytest tests/`
+
+## 🗺️ Mapa de Dados
+
+| Coluna                 | Descrição                              |
+|------------------------|----------------------------------------|
+| brewery_type           | Filtrar por tipo de cervejaria.        |
+| state                  | Filtrar cervejarias por estado.        |
+| brewery_count          | Quantidade agregada de cervejarias     |
+
+## 🔍 Visualização com Amazon Athena
+
+Após o pipeline de ingestão e transformação dos dados (Bronze → Silver → Gold), é possível consultar os dados agregados diretamente no Amazon Athena.
+
+- Como consultar no Athena ?
+
+1. Acesse o console do Amazon Athena.
+
+2. No painel esquerdo, selecione o banco de dados ou crie um novo com:
+   
+     `CREATE DATABASE breweries_data;`
+
+3. Crie a tabela apontando para os dados Parquet:
+   
+![image](https://github.com/user-attachments/assets/7cdaebdd-0a2d-4f64-9727-19414cb963bd)
+
+4. Faça consultas SQL normalmente via terminal Athena.
 
 ## 👤 Autor
 
