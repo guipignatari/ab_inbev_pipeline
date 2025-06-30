@@ -4,6 +4,7 @@ import pandas as pd
 from io import BytesIO
 import pyarrow as pa
 import pyarrow.parquet as pq
+from dotenv import load_dotenv
 
 AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
 AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
