@@ -1,0 +1,30 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# --- Ambientes virtuais ---
+.venv/
+.env
+*.env
+
+# --- Airflow ---
+logs/
+airflow.db
+airflow-webserver.pid
+unittests.cfg
+
+# --- Docker ---
+*.pid
+.dockerignore
+
+# --- VSCode ---
+.vscode/
+
+# --- Sistema operacional ---
+.DS_Store
+
+# --- Arquivos temporários e de cache ---
+*.log
+*.sqlite3
+*.db
