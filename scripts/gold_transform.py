@@ -24,21 +24,21 @@ def transform_and_save():
     silver_prefix = 'silver/silver_breweries/'
     gold_prefix = 'gold/gold_breweries/'
 
-    # List and read all parquet files from silver layer
+    # Lista e le todos os arquivos da camada Silver
     parquet_files = list_parquet_files(bucket, silver_prefix)
     df_list = [read_parquet_from_s3(bucket, key) for key in parquet_files]
     df = pd.concat(df_list, ignore_index=True)
 
-    # Aggregate: count breweries by type and state
+    # Aggregate breweries por type e state
     agg_df = df.groupby(['brewery_type', 'state']).size().reset_index(name='brewery_count')
 
-    # Convert to Parquet
+    # Converte para Parquet
     table = Table.from_pandas(agg_df)
     buffer = BytesIO()
     pq.write_table(table, buffer)
     buffer.seek(0)
 
-    # Save back to S3
+    # Save to S3
     s3 = boto3.client('s3')
     s3.put_object(Bucket=bucket, Key=f'{gold_prefix}brewery_aggregates.parquet', Body=buffer.getvalue())
 
