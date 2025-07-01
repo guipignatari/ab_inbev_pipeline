@@ -2,7 +2,7 @@
 
 ## 🎯 Objetivo
 
-Este projeto implementa um pipeline de dados em três camadas (Bronze → Silver → Gold) utilizando Python, S3, Athena e Apache Airflow. Cada estágio do pipeline transforma os dados de forma incremental, culminando em agregações úteis para análise.
+Este projeto implementa um pipeline de dados em três camadas (Bronze → Silver → Gold) utilizando Python, PyArrow, S3, Athena e Apache Airflow. Cada estágio do pipeline transforma os dados de forma incremental, culminando em agregações úteis para análise.
 
 ## 🌐 Fonte dos Dados
 
@@ -16,7 +16,7 @@ Os dados são extraídos no formato JSON e salvos de forma bruta na camada Bronz
 
 ## 🚀 Stack Utilizada
 
-- Python (pandas, boto3, requests)
+- Python (pandas, pyarrow, boto3, requests)
 - Amazon AWS (S3, Athena, IAM)
 - Apache Airflow
 - Docker / Docker Compose
